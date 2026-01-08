@@ -240,9 +240,10 @@ class SecurityGroupUpdater:
         # 查找并删除匹配的旧规则
         deleted_count = 0
         for rule in existing_rules:
-            print(f"规则: {rule.ip_protocol} {rule.port_range} {rule.nic_type} {rule.source_cidr_ip} {rule.description}")
+            #print(f"规则: {rule.ip_protocol} {rule.port_range} {rule.nic_type} {rule.source_cidr_ip} {rule.description}")
             if (rule.ip_protocol.lower() == ip_protocol.lower() and 
                 rule.port_range == port_range and
+                rule.source_cidr_ip != new_source_ip and
                 rule.description == description):
                 # 删除旧规则
                 print(f"删除旧规则: {rule.source_cidr_ip}")
