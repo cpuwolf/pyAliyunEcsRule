@@ -51,6 +51,61 @@ ALIBABA_CLOUD_ACCESS_KEY_ID=your_access_key_id
 ALIBABA_CLOUD_ACCESS_KEY_SECRET=your_access_key_secret
 ```
 
+## Docker 使用
+
+### 构建镜像
+
+```bash
+docker build -t pyaliyun-ecs-rule .
+```
+
+### 运行容器
+
+#### 使用环境变量参数
+
+```bash
+docker run --rm \
+  -e ALIBABA_CLOUD_ACCESS_KEY_ID=your_access_key_id \
+  -e ALIBABA_CLOUD_ACCESS_KEY_SECRET=your_access_key_secret \
+  pyaliyun-ecs-rule \
+  --region-id cn-hangzhou \
+  --security-group-id sg-xxxxxxxxxxxxx \
+  --port-range 22/22
+```
+
+#### 使用环境变量文件
+
+首先创建 `.env` 文件：
+```
+ALIBABA_CLOUD_ACCESS_KEY_ID=your_access_key_id
+ALIBABA_CLOUD_ACCESS_KEY_SECRET=your_access_key_secret
+```
+
+然后运行：
+```bash
+docker run --rm \
+  --env-file .env \
+  pyaliyun-ecs-rule \
+  --region-id cn-hangzhou \
+  --security-group-id sg-xxxxxxxxxxxxx \
+  --port-range 22/22
+```
+
+#### 完整参数示例
+
+```bash
+docker run --rm \
+  -e ALIBABA_CLOUD_ACCESS_KEY_ID=your_access_key_id \
+  -e ALIBABA_CLOUD_ACCESS_KEY_SECRET=your_access_key_secret \
+  pyaliyun-ecs-rule \
+  --region-id cn-hangzhou \
+  --security-group-id sg-xxxxxxxxxxxxx \
+  --ip-protocol tcp \
+  --port-range 22/22 \
+  --description "SSH access from home" \
+  --endpoint ecs.cn-hangzhou.aliyuncs.com
+```
+
 ## 使用方法
 
 ### 基本用法

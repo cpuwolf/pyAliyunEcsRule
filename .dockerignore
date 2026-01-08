@@ -1,0 +1,40 @@
+# Git 相关
+.git
+.gitignore
+.gitattributes
+
+# Python 相关
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info
+dist
+build
+.venv
+venv/
+env/
+
+# IDE 相关
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# 文档和安装脚本（不需要在容器中）
+README.md
+LICENSE
+install/
+
+# 环境变量文件
+.env
+.env.local
+
+# 其他
+.DS_Store
+Thumbs.db
+
